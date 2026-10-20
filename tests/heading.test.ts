@@ -12,4 +12,5 @@ describe("heading", () => {
   it("parses inline markup inside headings", () => expect(toHtml("# Hello **world**")).toBe("<h1>Hello <strong>world</strong></h1>"));
   it("records the depth", () => expect(parse("### x").children[0]).toMatchObject({ type: "heading", depth: 3 }));
   it("ends the previous paragraph", () => expect(toHtml("text\n# Title")).toBe("<p>text</p>\n<h1>Title</h1>"));
+  it("renders an empty heading instead of throwing", () => expect(toHtml("#")).toBe("<h1></h1>"));
 });

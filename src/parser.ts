@@ -8,7 +8,7 @@ const ORDERED = /^\s*\d+[.)]\s+(.*)$/;
 function parseHeading(line: string): Block | null {
   const m = HEADING.exec(line);
   if (!m) return null;
-  const text = m[2];
+  const text = m[2] ?? "";
   return { type: "heading", depth: m[1].length, children: parseInline(text.trim()) };
 }
 
